@@ -1,0 +1,14 @@
+<div class="col-md-8 col-md-offset-2">
+	<form (ngSubmit)="onSubmit()" [formGroup]="myForm">
+		<div class="form-group">
+			<label for="edit">Edit</label>
+			<input 
+                type="text" 
+                id="content" 
+                class="form-control"
+                name="edit"
+                formControlName="editField">
+		</div>
+		<button class="btn btn-primary" type="submit" [disabled]="!myForm.valid">Save</button>
+	</form>
+</div>

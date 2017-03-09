@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MessageService } from './message.service';
 import { Message } from './message.model';
@@ -18,4 +18,5 @@ export class messageInputComponent{
         this.messageService.addMessage(msg);
         form.resetForm();    
     }
+
 }

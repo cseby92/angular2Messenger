@@ -1,4 +1,10 @@
-<div class="col-md-8 col-md-offset-2">
-	<app-message [message]="message" 
-     *ngFor="let message of messages"></app-message>
+<div class="col-md-8 col-md-offset-2" *ngFor="let message of messages; let i = index">
+	<div>
+		<app-message (editClicked)="onEditClicked(i)" [message]="message"></app-message>
+        <app-message-edit 
+            [message]="message" 
+            [style.display]="displayState[i]" 
+            (submitClicked)="onEditClicked(i)"
+            #edit></app-message-edit>
+    </div>
 </div>

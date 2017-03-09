@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 
 import { Message } from "./message.model";
 import { MessageService } from './message.service';
+import { messageEditComponent } from './message-edit.component';
 
 
 @Component({
@@ -10,11 +11,42 @@ import { MessageService } from './message.service';
 })
 
 export class MessageListComponent implements OnInit{
-    messages: Message[];
+    
+    @ViewChild('edit') private editComponent: messageEditComponent;
 
-    constructor(private messageService : MessageService){}
+    messages: Message[];
+    displayState = [];
+
+    constructor(private messageService : MessageService){
+        this.messageService.messageAdded.subscribe(
+            (index) => {
+                this.addDisplayStateElement(index);
+            }
+        );
+        this.messageService.messageDeleted.subscribe(
+            (index) => {
+                this.deleteDisplayStateElement(index);
+            }
+        );
+    }
 
     ngOnInit(){
         this.messages = this.messageService.getMessages();
+    }
+
+    onEditClicked(i: number){
+        if(this.displayState[i] === 'none')
+            this.displayState[i] = 'block';
+        else{
+            this.displayState[i] = 'none';
+            this.editComponent.resetInput();
+        }
+    }
+    addDisplayStateElement(index){
+        this.displayState.push('none');
+    }
+
+    deleteDisplayStateElement(index){
+        this.displayState.splice(index, 1);
     }
 }
