@@ -19,8 +19,10 @@ export class messageEditComponent implements OnInit {
     constructor(private messageService: MessageService) { }
 
     onSubmit() {
-        const msg = new Message(this.myForm.value.editField, 'Max');
-        this.messageService.editMessage(this.message, msg);
+        this.messageService.editMessage(this.message, this.myForm.value.editField)
+        .subscribe(
+            result =>console.log(result)
+        );
         this.submitClicked.emit();
 
     }
