@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 
 import { Message } from "./message.model";
 import { MessageService } from './message.service';
-import { messageEditComponent } from './message-edit.component';
+import { MessageEditComponent } from './message-edit.component';
 
 
 @Component({
@@ -12,7 +12,7 @@ import { messageEditComponent } from './message-edit.component';
 
 export class MessageListComponent implements OnInit{
     
-    @ViewChild('edit') private editComponent: messageEditComponent;
+    @ViewChild('edit') private editComponent: MessageEditComponent;
 
     messages: Message[];
     displayState = [];

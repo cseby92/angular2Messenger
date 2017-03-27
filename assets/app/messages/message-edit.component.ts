@@ -9,7 +9,7 @@ import { Message } from './message.model';
     templateUrl: './message-edit.component.html',
 })
 
-export class messageEditComponent implements OnInit {
+export class MessageEditComponent implements OnInit {
 
     @Input() message: Message;
     @Output() submitClicked = new EventEmitter<string>();

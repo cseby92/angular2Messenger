@@ -1,11 +1,9 @@
-import { messageInputComponent } from './message-input.component';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable} from "rxjs";
 
 import { Message } from './message.model';
-import { messageEditComponent } from './message-edit.component';
 import { ErrorService } from '../errors/error.service';
 
 

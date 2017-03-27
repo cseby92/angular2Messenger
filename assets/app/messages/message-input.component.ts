@@ -9,7 +9,7 @@ import { Message } from './message.model';
     templateUrl: './message-input.component.html',
 })
 
-export class messageInputComponent{
+export class MessageInputComponent{
 
     constructor(private messageService: MessageService){}
 
