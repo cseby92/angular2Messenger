@@ -29,7 +29,7 @@ export class MessageService{
 
         const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.post('http://localhost:3000/message' + token, body, { headers: header})
+        return this.http.post('http://angular2-messenger-deployment.herokuapp.com/message' + token, body, { headers: header})
             .map((response: Response) =>{
                const result = response.json();
                const message =  new Message(
@@ -50,7 +50,7 @@ export class MessageService{
         }
 
     getMessages(){
-        return this.http.get('http://localhost:3000/message')
+        return this.http.get('http://angular2-messenger-deployment.herokuapp.com/message')
             .map((response: Response) => {
                 const messages = response.json().obj;
                 let transformedMessages: Message[] = [];
@@ -79,7 +79,7 @@ export class MessageService{
         const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token')
             : '';
 
-          return this.http.delete('http://localhost:3000/message/' + message.messageId + token)
+          return this.http.delete('http://angular2-messenger-deployment.herokuapp.com/message/' + message.messageId + token)
             .map((response: Response) => {
                 console.log(response.json());
                 this.messageDeleted.emit(index);
@@ -102,7 +102,7 @@ export class MessageService{
         const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token')
             : '';
 
-        return this.http.patch('http://localhost:3000/message/' + oldMessage.messageId + token, body, { headers: header})
+        return this.http.patch('http://angular2-messenger-deployment.herokuapp.com/message/' + oldMessage.messageId + token, body, { headers: header})
             .map((response: Response) => response.json())
             .catch( (error: Response) => {
                 this.errorService.handleError(error.json());
