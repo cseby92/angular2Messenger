@@ -21,7 +21,7 @@ export var MessageService = (function () {
         });
         var token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.post('http://localhost:3000/message' + token, body, { headers: header })
+        return this.http.post('https://angular2-messenger-deployment.herokuapp.com/message' + token, body, { headers: header })
             .map(function (response) {
             var result = response.json();
             var message = new Message(result.obj.content, result.obj.user.firstName, result.obj._id, result.obj.user._id);
@@ -36,7 +36,7 @@ export var MessageService = (function () {
     };
     MessageService.prototype.getMessages = function () {
         var _this = this;
-        return this.http.get('http://localhost:3000/message')
+        return this.http.get('https://angular2-messenger-deployment.herokuapp.com/message')
             .map(function (response) {
             var messages = response.json().obj;
             var transformedMessages = [];
@@ -59,7 +59,7 @@ export var MessageService = (function () {
         this.messages.splice(index, 1);
         var token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.delete('http://localhost:3000/message/' + message.messageId + token)
+        return this.http.delete('https://angular2-messenger-deployment.herokuapp.com/message/' + message.messageId + token)
             .map(function (response) {
             console.log(response.json());
             _this.messageDeleted.emit(index);
@@ -79,7 +79,7 @@ export var MessageService = (function () {
         });
         var token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.patch('http://localhost:3000/message/' + oldMessage.messageId + token, body, { headers: header })
+        return this.http.patch('https://angular2-messenger-deployment.herokuapp.com/message/' + oldMessage.messageId + token, body, { headers: header })
             .map(function (response) { return response.json(); })
             .catch(function (error) {
             _this.errorService.handleError(error.json());
