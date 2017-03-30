@@ -29,7 +29,7 @@ export class MessageService{
 
         const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.post('http://angular2-messenger-deployment.herokuapp.com/message' + token, body, { headers: header})
+        return this.http.post('https://angular2-messenger-deployment.herokuapp.com/message' + token, body, { headers: header})
             .map((response: Response) =>{
                const result = response.json();
                const message =  new Message(
@@ -50,7 +50,7 @@ export class MessageService{
         }
 
     getMessages(){
-        return this.http.get('http://angular2-messenger-deployment.herokuapp.com/message')
+        return this.http.get('https://angular2-messenger-deployment.herokuapp.com/message')
             .map((response: Response) => {
                 const messages = response.json().obj;
                 let transformedMessages: Message[] = [];
@@ -79,7 +79,7 @@ export class MessageService{
         const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token')
             : '';
 
-          return this.http.delete('http://angular2-messenger-deployment.herokuapp.com/message/' + message.messageId + token)
+          return this.http.delete('https://angular2-messenger-deployment.herokuapp.com/message/' + message.messageId + token)
             .map((response: Response) => {
                 console.log(response.json());
                 this.messageDeleted.emit(index);
