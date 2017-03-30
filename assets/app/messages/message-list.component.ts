@@ -12,7 +12,7 @@ import { MessageEditComponent } from './message-edit.component';
 
 export class MessageListComponent implements OnInit{
     
-    @ViewChild('edit') private editComponent: MessageEditComponent;
+    @ViewChild('edit')  editComponent: MessageEditComponent;
 
     messages: Message[];
     displayState = [];
